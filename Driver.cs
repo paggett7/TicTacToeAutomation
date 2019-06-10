@@ -11,19 +11,19 @@ namespace CalendlyAutomation
 {
     public class Driver
     {
-        public IWebDriver CalendlyDriver;
+        public IWebDriver driver;
 
         [SetUp]
         public void StartDriver()
         {
-            CalendlyDriver = new ChromeDriver(@"C:\ChromeDriver");
-            CalendlyDriver.Url = "https://codepen.io/jshlfts32/full/bjambP/";
+            driver = new ChromeDriver(@"C:\ChromeDriver");
+            driver.Url = "https://codepen.io/jshlfts32/full/bjambP/";
         }
 
         [TearDown]
         public void CloseBrowser()
         {
-            CalendlyDriver.Close();
+            driver.Close();
         }
     }
 }
