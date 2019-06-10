@@ -16,27 +16,27 @@ namespace CalendlyAutomation
         public void CheckPageTitle()
         {
             Thread.Sleep(3000);
-            var pageTitle = CalendlyDriver.FindElement(By.Id("editable-title-span")).Text;
+            var pageTitle = driver.FindElement(By.Id("editable-title-span")).Text;
             Assert.IsTrue(pageTitle == "Broken (on purpose) Tic Tac Toe");
         }
 
         [Test]
         public void TicTacToeGridDisplayed()
         {
-            CalendlyDriver.SwitchTo().Frame(CalendlyDriver.FindElement(By.Id("result")));
-            CalendlyDriver.FindElement(By.Id("number")).SendKeys("3");
-            CalendlyDriver.FindElement(By.XPath(@"//button[@id='start']")).Click();
-            bool tableDisplayed = CalendlyDriver.FindElement(By.Id("table")).Displayed;
+            driver.SwitchTo().Frame(driver.FindElement(By.Id("result")));
+            driver.FindElement(By.Id("number")).SendKeys("3");
+            driver.FindElement(By.XPath(@"//button[@id='start']")).Click();
+            bool tableDisplayed = driver.FindElement(By.Id("table")).Displayed;
             Assert.IsTrue(tableDisplayed);
 
-            int countSqures = CalendlyDriver.FindElements(By.XPath("//td")).Count-1;
+            int countSqures = driver.FindElements(By.XPath("//td")).Count-1;
             int i = 0;
             while (i <= countSqures)
             {
-                bool endGame = CalendlyDriver.FindElement(By.Id("endgame")).Displayed;
+                bool endGame = driver.FindElement(By.Id("endgame")).Displayed;
                 if (!endGame)
                 {
-                    CalendlyDriver.FindElement(By.Id("" + i + "")).Click();
+                    driver.FindElement(By.Id("" + i + "")).Click();
                     i++;
                 }
                 else
